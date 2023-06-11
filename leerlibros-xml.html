@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tabla de Libros XML</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid black;
+    }
+    th {
+      background-color: #e0b53d;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    button {
+      background-color: #6184f8;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="mostrarTabla()">LISTADO DE LIBROS</button>
+  <div id="tablaLibros"></div>
+
+  <script>
+    function mostrarTabla() {
+      var xml = `<?xml version="1.0" encoding="UTF-8"?>
+      <Libros>
+        <Libro>
+          <CodigoLibro>128</CodigoLibro>
+          <Titulo>Los 3 Cerditos</Titulo>
+          <Estado>Bueno</Estado>
+          <Fechaedicion>14/04/2019</Fechaedicion>
+          <Categoria>Cuentos infantiles</Categoria>
+        </Libro>
+        <Libro>
+          <CodigoLibro>496</CodigoLibro>
+          <Titulo>Los Frijoles Magicos</Titulo>
+          <Estado>Bueno</Estado>
+          <Fechaedicion>20/08/1994</Fechaedicion>
+          <Categoria>Matematicas</Categoria>
+        </Libro>
+        <Libro>
+          <CodigoLibro>566</CodigoLibro>
+          <Titulo>POO</Titulo>
+          <Estado>Bueno</Estado>
+          <Fechaedicion>01/05/1998</Fechaedicion>
+          <Categoria>Informatica</Categoria>
+        </Libro>
+        <Libro>
+          <CodigoLibro>769</CodigoLibro>
+          <Titulo>Pinocho</Titulo>
+          <Estado>Bueno</Estado>
+          <Fechaedicion>17/03/2021</Fechaedicion>
+          <Categoria>Cuentos</Categoria>
+        </Libro>
+        <Libro>
+          <CodigoLibro>877</CodigoLibro>
+          <Titulo>Aplicaciones Web 1</Titulo>
+          <Estado>Bueno</Estado>
+          <Fechaedicion>01/05/2002</Fechaedicion>
+          <Categoria>Informatica</Categoria>
+        </Libro>
+        <Libro>
+          <CodigoLibro>145</CodigoLibro>
+          <Titulo>Base de Datos</Titulo>
+          <Estado>Bueno</Estado>
+          <Fechaedicion>24/06/2022</Fechaedicion>
+          <Categoria>Informatica</Categoria>
+        </Libro>
+        <Libro>
+          <CodigoLibro>298</CodigoLibro>
+          <Titulo>Anatomia</Titulo>
+          <Estado>Bueno</Estado>
+          <Fechaedicion>22/12/2020</Fechaedicion>
+          <Categoria>Salud</Categoria>
+        </Libro>
+        <Libro>
+          <CodigoLibro>444</CodigoLibro>
+          <Titulo>Ingles 2</Titulo>
+          <Estado>Bueno</Estado>
+          <Fechaedicion>29/07/2019</Fechaedicion>
+          <Categoria>Idiomas</Categoria>
+        </Libro>
+        <Libro>
+          <CodigoLibro>829</CodigoLibro>
+          <Titulo>Calculo</Titulo>
+          <Estado>Bueno</Estado>
+          <Fechaedicion>10/10/2009</Fechaedicion>
+          <Categoria>Matematicas</Categoria>
+        </Libro>
+        <Libro>
+          <CodigoLibro>658</CodigoLibro>
+          <Titulo>Frances</Titulo>
+          <Estado>Bueno</Estado>
+          <Fechaedicion>06/11/2018</Fechaedicion>
+          <Categoria>Idiomas</Categoria>
+        </Libro>
+      </Libros>`;
+
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(xml, "text/xml");
+
+      var libros = xmlDoc.getElementsByTagName("Libro");
+
+      var tablaHTML = "<table>";
+      tablaHTML += "<tr><th>Código Libro</th><th>Título</th><th>Estado</th><th>Fecha de Edición</th><th>Categoría</th></tr>";
+
+      for (var i = 0; i < libros.length; i++) {
+        var codigoLibro = libros[i].getElementsByTagName("CodigoLibro")[0].textContent;
+        var titulo = libros[i].getElementsByTagName("Titulo")[0].textContent;
+        var estado = libros[i].getElementsByTagName("Estado")[0].textContent;
+        var fechaEdicion = libros[i].getElementsByTagName("Fechaedicion")[0].textContent;
+        var categoria = libros[i].getElementsByTagName("Categoria")[0].textContent;
+
+        tablaHTML += "<tr>";
+        tablaHTML += "<td>" + codigoLibro + "</td>";
+        tablaHTML += "<td>" + titulo + "</td>";
+        tablaHTML += "<td>" + estado + "</td>";
+        tablaHTML += "<td>" + fechaEdicion + "</td>";
+        tablaHTML += "<td>" + categoria + "</td>";
+        tablaHTML += "</tr>";
+      }
+
+      tablaHTML += "</table>";
+
+      document.getElementById("tablaLibros").innerHTML = tablaHTML;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Registros de Préstamos JSON</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    button {
+      background-color: #da41f8;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #37ff37;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="mostrarRegistros()">Listado de Préstamos</button>
+  <table id="tabla-registros"></table>
+
+  <script>
+    const json = {
+      "registros": [
+        {
+          "Id": 1,
+          "Nombre": "Arturo Duran",
+          "Correo": "arturo@gmail.com",
+          "Tipo Material": "Libro",
+          "Nombre Material": "La Odisea",
+          "Fecha Prestamo": "2023-06-10",
+          "Fecha Devolucion": "2023-06-17"
+        },
+        {
+          "Id": 2,
+          "Nombre": "María Loor",
+          "Correo": "maria@hotmail.com",
+          "tipoMaterial": "Revista",
+          "Nombre Material": "National Geographic",
+          "Fecha Prestamo": "2023-06-05",
+          "Fecha Devolucion": "2023-06-12"
+        },
+        {
+          "Id": 3,
+          "Nombre": "Michael Tuarez",
+          "Correo": "michael@gmail.com",
+          "TipoMaterial": "Artículo",
+          "Nombre Material": "Introducción a la Inteligencia Artificial",
+          "Fecha Prestamo": "2023-06-08",
+          "Fecha Devolucion": "2023-06-15"
+        },
+        {
+          "Id": 4,
+          "Nombre": "Jahaira Mantuano",
+          "Correo": "jahaira@hotmail.com",
+          "Tipo Material": "Libro",
+          "Nombre Material": "Cien años de soledad",
+          "Fecha Prestamo": "2023-06-03",
+          "Fecha Devolucion": "2023-06-10"
+        }
+      ]
+    };
+
+    function mostrarRegistros() {
+      const registros = json.registros;
+      const tabla = document.getElementById('tabla-registros');
+
+      // Limpiar la tabla
+      tabla.innerHTML = '';
+
+      // Crear la cabecera de la tabla
+      const cabecera = document.createElement('tr');
+      for (let propiedad in registros[0]) {
+        const th = document.createElement('th');
+        th.textContent = propiedad;
+        cabecera.appendChild(th);
+      }
+      tabla.appendChild(cabecera);
+
+      // Crear las filas de la tabla con los datos
+      for (let i = 0; i < registros.length; i++) {
+        const registro = registros[i];
+        const fila = document.createElement('tr');
+        for (let propiedad in registro) {
+          const td = document.createElement('td');
+          td.textContent = registro[propiedad];
+          fila.appendChild(td);
+        }
+        tabla.appendChild(fila);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+    "registros": [
+      {
+        "Id": 1,
+        "Nombre": "Arturo Duran",
+        "Correo": "arturo@gmail.com",
+        "Tipo Material": "Libro",
+        "Nombre Material": "La Odisea",
+        "Fecha Prestamo": "2023-06-10",
+        "Fecha Devolucion": "2023-06-17"
+      },
+      {
+        "Id": 2,
+        "Nombre": "Maria Loor",
+        "Correo": "maria@hotmail.com",
+        "Tipo Material": "Revista",
+        "Nombre Material": "National Geographic",
+        "Fecha Prestamo": "2023-06-05",
+        "Fecha Devolucion": "2023-06-12"
+      },
+      {
+        "Id": 3,
+        "Nombre": "Michael Tuarez",
+        "Correo": "michael@gmail.com",
+        "Tipo Material": "Artículo",
+        "Nombre Material": "Introducción a la Inteligencia Artificial",
+        "Fecha Prestamo": "2023-06-08",
+        "Fecha Devolucion": "2023-06-15"
+      },
+      {
+        "Id": 4,
+        "Nombre": "Jahaira Mantuano",
+        "Correo": "jahaira@hotmail.com",
+        "Tipo Material": "Libro",
+        "Nombre Material": "Cien años de soledad",
+        "Fecha Prestamo": "2023-06-03",
+        "Fecha Devolucion": "2023-06-10"
+      }
+    ]
+  }
+  
